@@ -1,0 +1,33 @@
+
+<form class="form-inline justify-content-center text-center" (ngSubmit)="search()" #searchForm="ngForm">          
+    <div class="form-group mx-sm-3 my-2">
+      <input type="text" class="form-control" id="search" name="search" [(ngModel)]="searchQuery" placeholder="University Name">
+    </div>
+    <button type="submit" class="btn btn-primary my-2">Search</button>
+    <button type="button" class="btn btn-primary mx-3 my-2" (click)="showAll()">Show All</button>
+</form>
+
+<div class="justify-content-center">
+    <table class="table col-12" id="newTable">
+        <thead>
+            <tr>
+                <th scope="col">University Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="universities">NameName
+            <tr *ngIf="noRecord">
+                <td colspan="4">No records found, please make sure you typed the name correctly.</td>
+            </tr>
+            <tr *ngFor="let row of rows">
+                <td>{{row.name}}</td>
+                <td>{{row.address}}</td>
+                <td>{{row.phone}}</td>
+                <td><button class="btn btn-outline-danger" (click)="delete(row.name)">Delete</button></td>
+            </tr>
+        </tbody>
+        </table>
+   
+</div>
